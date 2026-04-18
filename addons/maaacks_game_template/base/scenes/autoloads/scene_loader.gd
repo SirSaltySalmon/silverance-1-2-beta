@@ -4,11 +4,15 @@ extends Node
 
 signal scene_loaded
 
+## Path to the loading screen to display to players while loading a scene.
 @export_file("*.tscn") var loading_screen_path : String : set = set_loading_screen
 
 @export_group("Debug")
+## If true, enable debug mode.
 @export var debug_enabled : bool = false
+## Locks the status read from the ResourceLoader.
 @export var debug_lock_status : ResourceLoader.ThreadLoadStatus
+## Locks the progress read from the ResourceLoader.
 @export_range(0, 1) var debug_lock_progress : float = 0.0
 
 var _loading_screen : PackedScene
@@ -42,6 +46,9 @@ func get_progress() -> float:
 func get_resource() -> Resource:
 	if not _check_scene_path():
 		return
+	if ResourceLoader.has_cached(_scene_path):
+		_loaded_resource = ResourceLoader.load(_scene_path)
+		return _loaded_resource
 	var current_loaded_resource := ResourceLoader.load_threaded_get(_scene_path)
 	if current_loaded_resource != null:
 		_loaded_resource = current_loaded_resource
@@ -56,6 +63,7 @@ func change_scene_to_resource() -> void:
 		get_tree().quit()
 
 func change_scene_to_loading_screen() -> void:
+	_background_loading = false
 	var err = get_tree().change_scene_to_packed(_loading_screen)
 	if err:
 		push_error("failed to change scenes to loading screen: %d" % err)
@@ -81,7 +89,7 @@ func _check_loading_screen() -> bool:
 	return true
 
 func reload_current_scene() -> void:
-	return get_tree().reload_current_scene()
+	get_tree().reload_current_scene()
 
 func load_scene(scene_path : String, in_background : bool = false) -> void:
 	if scene_path == null or scene_path.is_empty():
@@ -95,9 +103,8 @@ func load_scene(scene_path : String, in_background : bool = false) -> void:
 			change_scene_to_resource()
 		return
 	ResourceLoader.load_threaded_request(_scene_path)
-	if _background_loading or not _check_loading_screen():
-		set_process(true)
-	else:
+	set_process(true)
+	if _check_loading_screen() and not _background_loading:
 		change_scene_to_loading_screen()
 
 func _unhandled_key_input(event : InputEvent) -> void:

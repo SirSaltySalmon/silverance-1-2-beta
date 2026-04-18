@@ -127,6 +127,7 @@ func apply_dialogue_line() -> void:
 
 	progress.hide()
 	is_waiting_for_input = false
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	balloon.focus_mode = Control.FOCUS_ALL
 	balloon.grab_focus()
 
@@ -157,6 +158,7 @@ func apply_dialogue_line() -> void:
 	elif dialogue_line.responses.size() > 0:
 		balloon.focus_mode = Control.FOCUS_NONE
 		responses_menu.show()
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	elif dialogue_line.time != "":
 		var time: float = dialogue_line.text.length() * 0.02 if dialogue_line.time == "auto" else dialogue_line.time.to_float()
 		await get_tree().create_timer(time).timeout
