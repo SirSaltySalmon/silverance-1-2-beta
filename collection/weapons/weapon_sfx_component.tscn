@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://0hbe3suwmv45"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_b232f"]
+random_pitch = 1.0594631
+
+[node name="WeaponSFXComponent" type="AudioStreamPlayer3D" unique_id=789845698]
+transform = Transform3D(1.0000008, 5.979091e-07, 2.0036714e-07, 7.450581e-09, 0.9999999, -2.650777e-07, -3.623427e-09, -2.3283064e-10, 1.000001, 0, 0, 0)
+stream = SubResource("AudioStreamRandomizer_b232f")
+max_distance = 10.0

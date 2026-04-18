@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://bgdo367144c1q"]
+
+[ext_resource type="Script" uid="uid://bkdnhutpqtlgw" path="res://mechanics/camera/camera.gd" id="1_6hvry"]
+[ext_resource type="Script" uid="uid://dwq87alu8pxbl" path="res://addons/shaker/src/Vector3/shaker_component3D.gd" id="2_gnre0"]
+[ext_resource type="Script" uid="uid://bi3sk4nyfw2jg" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="3_1qdsd"]
+[ext_resource type="Script" uid="uid://cuwg1vjmqlju3" path="res://addons/shaker/data/Vector3/ShakerTypeRandom3D.gd" id="4_oep27"]
+[ext_resource type="Script" uid="uid://cfvcmkn1ks6r6" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="5_danbq"]
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_8uh7m"]
+length = 0.2
+slide_on_slope = true
+
+[sub_resource type="Resource" id="Resource_0i1il"]
+script = ExtResource("4_oep27")
+amplitude = Vector3(0.07, 0.07, 0)
+metadata/_custom_type_script = "uid://cuwg1vjmqlju3"
+
+[sub_resource type="Resource" id="Resource_1qdsd"]
+script = ExtResource("4_oep27")
+amplitude = Vector3(0.02, 0.02, 0.02)
+metadata/_custom_type_script = "uid://cuwg1vjmqlju3"
+
+[sub_resource type="Resource" id="Resource_88vix"]
+script = ExtResource("5_danbq")
+PositionShake = Array[ExtResource("3_1qdsd")]([SubResource("Resource_0i1il")])
+RotationShake = Array[ExtResource("3_1qdsd")]([SubResource("Resource_1qdsd")])
+metadata/_custom_type_script = "uid://cfvcmkn1ks6r6"
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_6hvry"]
+points = PackedVector3Array(0, 0, 0, -11.5, 6.5, -15, 11.5, 6.5, -15, -11.5, -6.5, -15, 11.5, -6.5, -15)
+
+[node name="ThirdPersonCamera" type="Node3D" unique_id=944710263 node_paths=PackedStringArray("camera_target", "camera3d", "spring_arm", "dummy", "shaker", "shaker_short")]
+script = ExtResource("1_6hvry")
+camera_target = NodePath("CameraTarget")
+camera3d = NodePath("CameraTarget/SpringArm3D/Camera3D")
+spring_arm = NodePath("CameraTarget/SpringArm3D")
+dummy = NodePath("CameraTarget/Dummy")
+shaker = NodePath("CameraTarget/SpringArm3D/Camera3D/ShakerComponent3D")
+shaker_short = NodePath("CameraTarget/SpringArm3D/Camera3D/ShakerComponent3D2")
+
+[node name="CameraTarget" type="Node3D" parent="." unique_id=1533057141]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Dummy" type="Node3D" parent="CameraTarget" unique_id=1352728682]
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraTarget" unique_id=1711434521]
+shape = SubResource("SeparationRayShape3D_8uh7m")
+spring_length = 4.0
+
+[node name="Camera3D" type="Camera3D" parent="CameraTarget/SpringArm3D" unique_id=1031133724]
+transform = Transform3D(1, 2.1647448e-07, 8.181901e-07, -2.1647429e-07, 1, -2.1725282e-07, -8.1819013e-07, 2.1725265e-07, 1, 8.81555e-08, 9.314681e-08, 4.99999)
+
+[node name="ShakerComponent3D" type="Node3D" parent="CameraTarget/SpringArm3D/Camera3D" unique_id=657697887]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -5)
+script = ExtResource("2_gnre0")
+duration = 0.5
+fade_in = 1e-05
+fade_out = 1.56917
+shakerPreset = SubResource("Resource_88vix")
+metadata/_custom_type_script = "uid://dwq87alu8pxbl"
+
+[node name="ShakerComponent3D2" type="Node3D" parent="CameraTarget/SpringArm3D/Camera3D" unique_id=456340017]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.5, -5)
+script = ExtResource("2_gnre0")
+duration = 0.2
+fade_in = 1e-05
+fade_out = 1.56917
+shakerPreset = SubResource("Resource_88vix")
+metadata/_custom_type_script = "uid://dwq87alu8pxbl"
+
+[node name="TargetRange" type="Area3D" parent="CameraTarget/SpringArm3D/Camera3D" unique_id=2012472794]
+collision_layer = 0
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CameraTarget/SpringArm3D/Camera3D/TargetRange" unique_id=1849842104]
+shape = SubResource("ConvexPolygonShape3D_6hvry")
+
+[connection signal="body_entered" from="CameraTarget/SpringArm3D/Camera3D/TargetRange" to="." method="_on_target_range_body_entered"]
+[connection signal="body_exited" from="CameraTarget/SpringArm3D/Camera3D/TargetRange" to="." method="_on_target_range_body_exited"]

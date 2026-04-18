@@ -1,0 +1,53 @@
+~ movement
+Sign: WASD to move, Space to jump.
+Sign: Hold Shift to run.
+Sign: All inputs can be binded to other keys in Pause (Escape) -> Options -> Controls.
+=> END
+
+~ combat_1
+Sign: Left click behind an unalerted enemy to perform a stealth kill.
+=> END
+
+~ inventory
+Sign: Interact with items and objects with F.
+Sign: Open inventory with I to equip your new weapon.
+=> END
+
+~ combat_2
+Sign: Left Click to attack, Right Click to block.
+Sign: Right Click precisely to parry.
+Sign: Dodge with shift. Dodging is easier than parrying.
+Sign: Middle click to lock on to an enemy.
+=> END
+
+~ combat_3
+Sign: R to heal.
+Sign: Hold down attack to charge up a stronger unblockable attack.
+Sign: Attack while jumping to perform a plunge attack.
+=> END
+
+~ campfire
+Sign: In front of you is a campfire.
+Sign: Rest at campfires to restore your health. Lighting up a campfire for the first time allow for fast travel to said campfire.
+Sign: You have limited heals each life. Resting also restore heal charges.
+=> END
+
+~ combat_4
+Sign: When enemy runs out of poise (yellow), attack at their red circle to perform a Deathfang.
+Sign: Deathfang restores your health and poise. This rewards picking apart enemies in large groups.
+=> END
+
+~ combat_5
+Sign: Press Ctrl to use your Special, which costs Blood to use.
+Sign: You gain Blood every time you deal or take damage.
+Sign: You can hide the list of controls on screen in Pause -> Options -> Input
+=> END
+
+~ movement_2
+Sign: You can hold Space to float. Floating consumes stamina.
+Sign: Stamina regenerates automatically over time.
+=> END
+
+~ tutorial_end
+Sign: Congrats! You've played all the game had to offer til now.
+=> END

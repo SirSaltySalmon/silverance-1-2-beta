@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://brh4feqx1g55p"]
+
+[ext_resource type="ArrayMesh" uid="uid://cn8x64ux8gvq2" path="res://assets/assetpacks/KayKit_DungeonRemastered_1.1_FREE/Assets/obj/torch_mounted.obj" id="1_2cqgg"]
+
+[node name="TorchMounted" type="MeshInstance3D" unique_id=739520176]
+mesh = ExtResource("1_2cqgg")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=834885755]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.43876505, 0.31018147)
+light_color = Color(1, 0.5803922, 0.15294118, 1)

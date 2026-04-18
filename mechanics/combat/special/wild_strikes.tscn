@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://df06soeahj7wc"]
+
+[ext_resource type="Script" uid="uid://dwaxvokvje8dl" path="res://mechanics/combat/special/wild_strikes.gd" id="1_1w6xh"]
+[ext_resource type="Script" uid="uid://7iajig7by6by" path="res://mechanics/combat/special/wild_strikes_state.gd" id="2_faoej"]
+
+[node name="WildStrikes" type="Node" unique_id=1575980735 node_paths=PackedStringArray("state", "timer")]
+script = ExtResource("1_1w6xh")
+state = NodePath("WildStrikes")
+timer = NodePath("Timer")
+special_name = "Wild Strikes"
+cost = 20
+metadata/_custom_type_script = "uid://bsh3xlqamdnxx"
+
+[node name="Timer" type="Timer" parent="." unique_id=184511492]
+wait_time = 3.0
+one_shot = true
+
+[node name="WildStrikes" type="Node" parent="." unique_id=1703459100]
+script = ExtResource("2_faoej")
+metadata/_custom_type_script = "uid://6neydgm4utlu"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://y756ittct18h"]
+
+[ext_resource type="Script" uid="uid://enacd7lmim43" path="res://mechanics/inventory/equipment_button.gd" id="1_oeo04"]
+
+[node name="Button" type="Button" unique_id=166793784]
+custom_minimum_size = Vector2(120, 120)
+focus_mode = 0
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_oeo04")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

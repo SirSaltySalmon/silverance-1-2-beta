@@ -1,0 +1,25 @@
+[gd_scene load_steps=8 format=3 uid="uid://cc37235kj4384"]
+
+[ext_resource type="Script" uid="uid://b5oej1q4h7jvh" path="res://addons/maaacks_game_template/base/scripts/ui_sound_controller.gd" id="1_dmagn"]
+[ext_resource type="AudioStream" uid="uid://c0d416o7q1401" path="res://sound/sfx/ui/Minimalist1.mp3" id="2_e13bv"]
+[ext_resource type="AudioStream" uid="uid://dkynqtjal2ugh" path="res://sound/sfx/ui/Minimalist6.mp3" id="3_42wer"]
+[ext_resource type="AudioStream" uid="uid://dtnd6fxsms6f2" path="res://sound/sfx/ui/Coffee2.mp3" id="4_vawf6"]
+[ext_resource type="AudioStream" uid="uid://bswp7aiyr2xds" path="res://sound/sfx/ui/Coffee1.mp3" id="5_mbwen"]
+[ext_resource type="AudioStream" uid="uid://cd3sagjn504fl" path="res://sound/sfx/ui/Modern8.mp3" id="6_iftdg"]
+[ext_resource type="AudioStream" uid="uid://cohvt4x2i2nc4" path="res://sound/sfx/ui/Modern9.mp3" id="7_xlkju"]
+
+[node name="ProjectUISoundController" type="Node"]
+script = ExtResource("1_dmagn")
+button_hovered = ExtResource("2_e13bv")
+button_focused = ExtResource("2_e13bv")
+button_pressed = ExtResource("3_42wer")
+tab_hovered = ExtResource("2_e13bv")
+tab_changed = ExtResource("2_e13bv")
+tab_selected = ExtResource("3_42wer")
+slider_hovered = ExtResource("2_e13bv")
+slider_focused = ExtResource("2_e13bv")
+slider_drag_started = ExtResource("4_vawf6")
+slider_drag_ended = ExtResource("5_mbwen")
+line_focused = ExtResource("2_e13bv")
+line_text_submitted = ExtResource("6_iftdg")
+line_text_change_rejected = ExtResource("7_xlkju")

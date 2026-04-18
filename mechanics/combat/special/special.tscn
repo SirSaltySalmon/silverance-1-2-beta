@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bugl0s2nurbtt"]
+
+[ext_resource type="Script" uid="uid://bsh3xlqamdnxx" path="res://mechanics/combat/special/special.gd" id="1_52kmc"]
+
+[node name="Special" type="Node3D"]
+script = ExtResource("1_52kmc")

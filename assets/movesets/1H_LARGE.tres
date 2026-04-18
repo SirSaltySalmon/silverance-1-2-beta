@@ -1,0 +1,53 @@
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://c50j3m4j5reib"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_01a8r"]
+animation = &"combat/Melee_1H_Slash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n0kro"]
+animation = &"combat/Melee_1H_Stab"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yu6mf"]
+animation = &"combat/Melee_Dualwield_Slash"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qtwgh"]
+animation = &"combat/Melee_2H_Slam"
+use_custom_timeline = true
+timeline_length = 3.0
+stretch_time_scale = false
+start_offset = 0.7999999999999972
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cy03l"]
+animation = &"special/Flexing"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vs4qx"]
+animation = &"combat/Melee_2H_Slam"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f8gl5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ktgdi"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rcedk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i3uf7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ixbjj"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_88256"]
+
+[resource]
+allow_transition_to_self = true
+states/BASIC_0/node = SubResource("AnimationNodeAnimation_01a8r")
+states/BASIC_0/position = Vector2(509, 8)
+states/BASIC_1/node = SubResource("AnimationNodeAnimation_n0kro")
+states/BASIC_1/position = Vector2(509, 62)
+states/BASIC_2/node = SubResource("AnimationNodeAnimation_yu6mf")
+states/BASIC_2/position = Vector2(509, 117)
+states/DEATHFANG_HIT/node = SubResource("AnimationNodeAnimation_qtwgh")
+states/DEATHFANG_HIT/position = Vector2(-167, 100)
+states/DEATHFANG_STARTUP/node = SubResource("AnimationNodeAnimation_cy03l")
+states/DEATHFANG_STARTUP/position = Vector2(48, 100)
+states/PLUNGE/node = SubResource("AnimationNodeAnimation_vs4qx")
+states/PLUNGE/position = Vector2(509, 174)
+transitions = ["Start", "BASIC_0", SubResource("AnimationNodeStateMachineTransition_f8gl5"), "Start", "BASIC_1", SubResource("AnimationNodeStateMachineTransition_ktgdi"), "Start", "PLUNGE", SubResource("AnimationNodeStateMachineTransition_rcedk"), "Start", "BASIC_2", SubResource("AnimationNodeStateMachineTransition_i3uf7"), "Start", "DEATHFANG_STARTUP", SubResource("AnimationNodeStateMachineTransition_ixbjj"), "DEATHFANG_STARTUP", "DEATHFANG_HIT", SubResource("AnimationNodeStateMachineTransition_88256")]
+graph_offset = Vector2(-337.5, -26.509003)

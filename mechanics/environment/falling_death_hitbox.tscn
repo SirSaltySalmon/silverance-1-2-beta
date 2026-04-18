@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://c35xe345ak5jp"]
+
+[ext_resource type="Script" uid="uid://ielnrlhxc62" path="res://mechanics/environment/falling_death_hitbox.gd" id="1_iu0um"]
+
+[node name="FallingDeathHitbox" type="Area3D" unique_id=1354369263]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_iu0um")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://voeuvxbatus5"]
+
+[ext_resource type="Texture2D" uid="uid://bnkng10jlmuco" path="res://assets/assetpacks/sky/AllSkyFree_Sky_ColdNight_Equirect.png" id="1"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_jg3j4"]
+panorama = ExtResource("1")
+
+[sub_resource type="Sky" id="Sky_gvhec"]
+sky_material = SubResource("PanoramaSkyMaterial_jg3j4")
+
+[sub_resource type="Environment" id="2"]
+background_mode = 2
+sky = SubResource("Sky_gvhec")
+ambient_light_energy = 1.11
+ssao_enabled = true
+ssao_radius = 8.1
+ssao_intensity = 4.3
+glow_enabled = true
+glow_intensity = 1.86
+glow_strength = 0.87
+glow_bloom = 0.02
+glow_hdr_threshold = 0.44
+fog_depth_curve = 2.0
+fog_depth_begin = 0.0
+fog_depth_end = 1358.0
+
+[node name="AllSkyFree_ColdNight" type="Node3D" unique_id=1937519832]
+
+[node name="WorldEnvironment_ColdNightEquirect" type="WorldEnvironment" parent="." unique_id=1816549213]
+environment = SubResource("2")
+
+[node name="DirectionalLight_ColdNightEquirect" type="DirectionalLight3D" parent="." unique_id=1427543263]
+transform = Transform3D(1, 0, 0, 0, 0.849579, 0.527461, 0, -0.527461, 0.849579, 0, 26.5368, 0)
+light_color = Color(0.376471, 0.517647, 0.666667, 1)
+light_energy = 0.07
+shadow_enabled = true

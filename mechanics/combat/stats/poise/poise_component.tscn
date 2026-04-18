@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://848t1kbd7rp4"]
+
+[ext_resource type="Script" uid="uid://bi0r8atfe71bj" path="res://mechanics/combat/stats/poise/poise_component.gd" id="1_68432"]
+[ext_resource type="Script" uid="uid://cubt6innbmywh" path="res://mechanics/combat/stats/change_display.gd" id="2_mj8gy"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ir81o"]
+bg_color = Color(0, 0, 0, 0.160784)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+shadow_size = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n0kro"]
+bg_color = Color(0.5764706, 0.47843137, 0.15686275, 1)
+border_width_bottom = 3
+border_color = Color(0.4, 0.33186668, 0.107999995, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7aoru"]
+
+[node name="PoiseComponent" type="ProgressBar" unique_id=629097899 node_paths=PackedStringArray("change_display", "regen_timer")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -100.0
+offset_top = -48.0
+offset_right = 100.0
+offset_bottom = -19.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/background = SubResource("StyleBoxFlat_ir81o")
+theme_override_styles/fill = SubResource("StyleBoxFlat_n0kro")
+value = 70.0
+script = ExtResource("1_68432")
+change_display = NodePath("ChangeDisplay")
+regen_timer = NodePath("RegenTimer")
+
+[node name="ChangeDisplay" type="ProgressBar" parent="." unique_id=1389337062 node_paths=PackedStringArray("bar", "timer")]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxEmpty_7aoru")
+value = 80.0
+show_percentage = false
+script = ExtResource("2_mj8gy")
+bar = NodePath("..")
+time_until_animation = 0.5
+animation_duration = 0.3
+timer = NodePath("TimeUntilAnimation")
+
+[node name="TimeUntilAnimation" type="Timer" parent="ChangeDisplay" unique_id=1722082404]
+wait_time = 5.0
+
+[node name="RegenTimer" type="Timer" parent="." unique_id=1725578231]
+one_shot = true
+
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]

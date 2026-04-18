@@ -1,0 +1,93 @@
+[gd_scene format=3 uid="uid://btisvvf7i6no3"]
+
+[ext_resource type="Script" uid="uid://csbfgsaeh1h2g" path="res://mechanics/states/npcstates/npc_state_machine.gd" id="1_0p8um"]
+[ext_resource type="Script" uid="uid://cxy8li63a4liq" path="res://mechanics/states/npcstates/idle.gd" id="2_qouus"]
+[ext_resource type="Script" uid="uid://cpf1xs6nsaequ" path="res://mechanics/states/npcstates/walk.gd" id="3_kem8q"]
+[ext_resource type="Script" uid="uid://0vdqcuter5ff" path="res://mechanics/states/npcstates/air_state.gd" id="3_qouus"]
+[ext_resource type="Script" uid="uid://cgsowdjlqg3gk" path="res://mechanics/states/npcstates/attack.gd" id="4_kkqy7"]
+[ext_resource type="Script" uid="uid://cyym7lj2nrdve" path="res://mechanics/states/npcstates/stun.gd" id="4_sncci"]
+[ext_resource type="Script" uid="uid://cxj5g4m3vb38n" path="res://mechanics/states/npcstates/block_hit.gd" id="5_kem8q"]
+[ext_resource type="Script" uid="uid://bq5rf2ym74cd8" path="res://mechanics/states/npcstates/stagger.gd" id="6_kkqy7"]
+[ext_resource type="Script" uid="uid://bp0bpg1vge37" path="res://mechanics/states/npcstates/knock_down.gd" id="7_wp7uc"]
+[ext_resource type="Script" uid="uid://c6nayfnc4j74b" path="res://mechanics/states/npcstates/air_hit.gd" id="8_apv7g"]
+[ext_resource type="Script" uid="uid://cnvk6p1ag8em7" path="res://mechanics/states/npcstates/parry.gd" id="8_kem8q"]
+[ext_resource type="Script" uid="uid://ba37au2kv8ku1" path="res://mechanics/states/npcstates/death.gd" id="9_vrhlj"]
+[ext_resource type="Script" uid="uid://b3elilx10o4lh" path="res://mechanics/states/npcstates/receive_deathfang.gd" id="9_xa2ht"]
+
+[node name="NPCStateMachine" type="Node" unique_id=1726951445 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("1_0p8um")
+initial_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://bv10lx1l2ng8n"
+
+[node name="Idle" type="Node" parent="." unique_id=2112595942]
+script = ExtResource("2_qouus")
+metadata/_custom_type_script = "uid://cda4xf5de0k66"
+
+[node name="Walk" type="Node" parent="." unique_id=1914044781]
+script = ExtResource("3_kem8q")
+metadata/_custom_type_script = "uid://cda4xf5de0k66"
+
+[node name="Attack" type="Node" parent="." unique_id=852184546]
+script = ExtResource("4_kkqy7")
+metadata/_custom_type_script = "uid://cda4xf5de0k66"
+
+[node name="AirState" type="Node" parent="." unique_id=343450540]
+script = ExtResource("3_qouus")
+metadata/_custom_type_script = "uid://em7krn21fwop"
+
+[node name="Stun" type="Node" parent="." unique_id=712884624]
+script = ExtResource("4_sncci")
+metadata/_custom_type_script = "uid://em7krn21fwop"
+
+[node name="StunTimer" type="Timer" parent="Stun" unique_id=1441576541]
+one_shot = true
+
+[node name="BlockHit" type="Node" parent="." unique_id=189070965]
+script = ExtResource("5_kem8q")
+metadata/_custom_type_script = "uid://em7krn21fwop"
+
+[node name="StunTimer" type="Timer" parent="BlockHit" unique_id=136040079]
+one_shot = true
+
+[node name="Parry" type="Node" parent="." unique_id=271701248]
+script = ExtResource("8_kem8q")
+metadata/_custom_type_script = "uid://em7krn21fwop"
+
+[node name="StunTimer" type="Timer" parent="Parry" unique_id=1609037888]
+one_shot = true
+
+[node name="Stagger" type="Node" parent="." unique_id=515201563]
+script = ExtResource("6_kkqy7")
+metadata/_custom_type_script = "uid://em7krn21fwop"
+
+[node name="StunTimer" type="Timer" parent="Stagger" unique_id=1401043505]
+one_shot = true
+
+[node name="KnockDown" type="Node" parent="." unique_id=461843980]
+script = ExtResource("7_wp7uc")
+metadata/_custom_type_script = "uid://em7krn21fwop"
+
+[node name="StunTimer" type="Timer" parent="KnockDown" unique_id=1177125535]
+one_shot = true
+
+[node name="RecoveryTimer" type="Timer" parent="KnockDown" unique_id=1705825046]
+one_shot = true
+
+[node name="AirHit" type="Node" parent="." unique_id=50145562]
+script = ExtResource("8_apv7g")
+metadata/_custom_type_script = "uid://em7krn21fwop"
+
+[node name="ReceiveDeathfang" type="Node" parent="." unique_id=770571185]
+script = ExtResource("9_xa2ht")
+metadata/_custom_type_script = "uid://bulw1gkmvv1vc"
+
+[node name="Death" type="Node" parent="." unique_id=1943676138]
+script = ExtResource("9_vrhlj")
+metadata/_custom_type_script = "uid://em7krn21fwop"
+
+[connection signal="timeout" from="Stun/StunTimer" to="Stun" method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="BlockHit/StunTimer" to="BlockHit" method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="Parry/StunTimer" to="Parry" method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="Stagger/StunTimer" to="Stagger" method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="KnockDown/StunTimer" to="KnockDown" method="_on_stun_timer_timeout"]
+[connection signal="timeout" from="KnockDown/RecoveryTimer" to="KnockDown" method="_on_recovery_timer_timeout"]

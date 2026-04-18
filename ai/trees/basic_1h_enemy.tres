@@ -1,0 +1,292 @@
+[gd_resource type="BehaviorTree" format=3 uid="uid://b12yn0m657m54"]
+
+[ext_resource type="Script" uid="uid://dxf51erv7tsh0" path="res://ai/tasks/has_target.gd" id="1_48hed"]
+[ext_resource type="Script" uid="uid://c5woio2qacq7t" path="res://ai/tasks/in_range.gd" id="2_ink62"]
+[ext_resource type="Script" uid="uid://bo3mp58rlplxw" path="res://ai/tasks/is_not_at_spawn.gd" id="3_4qa7v"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_jrrkt"]
+var/engaged/name = &"engaged"
+var/engaged/type = 1
+var/engaged/value = false
+var/engaged/hint = 0
+var/engaged/hint_string = ""
+
+[sub_resource type="BTCondition" id="BTCondition_nuvbt"]
+script = ExtResource("1_48hed")
+
+[sub_resource type="BBVariant" id="BBVariant_wgijm"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_3qhcu"]
+property = &"engaged"
+value = SubResource("BBVariant_wgijm")
+
+[sub_resource type="BBVariant" id="BBVariant_2udy2"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_svn1v"]
+property = &"engaged"
+value = SubResource("BBVariant_2udy2")
+
+[sub_resource type="BBVariant" id="BBVariant_svn1v"]
+type = 4
+saved_value = "Engage"
+resource_name = "Engage"
+
+[sub_resource type="BBNode" id="BBNode_fyrcr"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_ep8q1"]
+node = SubResource("BBNode_fyrcr")
+method = &"animate_ground"
+args = Array[BBVariant]([SubResource("BBVariant_svn1v")])
+
+[sub_resource type="BTWait" id="BTWait_jrrkt"]
+duration = 0.5
+
+[sub_resource type="BTSequence" id="BTSequence_ep8q1"]
+custom_name = "Engage"
+children = [SubResource("BTSetAgentProperty_svn1v"), SubResource("BTCallMethod_ep8q1"), SubResource("BTWait_jrrkt")]
+
+[sub_resource type="BTSequence" id="BTSequence_nuvbt"]
+custom_name = "Should engage?"
+children = [SubResource("BTCheckAgentProperty_3qhcu"), SubResource("BTSequence_ep8q1")]
+
+[sub_resource type="BTCondition" id="BTCondition_wgijm"]
+script = ExtResource("2_ink62")
+distance_max = 3.0
+
+[sub_resource type="BBVariant" id="BBVariant_66eof"]
+type = 4
+saved_value = "BASIC_0"
+resource_name = "BASIC_0"
+
+[sub_resource type="BBNode" id="BBNode_awjqc"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_xqtao"]
+node = SubResource("BBNode_awjqc")
+method = &"attack"
+args = Array[BBVariant]([SubResource("BBVariant_66eof")])
+
+[sub_resource type="BTWait" id="BTWait_3qhcu"]
+duration = 1.5
+
+[sub_resource type="BTSequence" id="BTSequence_7pnu1"]
+custom_name = "Basic Attack"
+children = [SubResource("BTCallMethod_xqtao"), SubResource("BTWait_3qhcu")]
+metadata/_weight_ = 1.0
+
+[sub_resource type="BBVariant" id="BBVariant_53r1u"]
+type = 4
+saved_value = "BASIC_1"
+resource_name = "BASIC_1"
+
+[sub_resource type="BBNode" id="BBNode_rewec"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_awjqc"]
+node = SubResource("BBNode_rewec")
+method = &"attack"
+args = Array[BBVariant]([SubResource("BBVariant_53r1u")])
+
+[sub_resource type="BTWait" id="BTWait_2udy2"]
+
+[sub_resource type="BBVariant" id="BBVariant_5u4kl"]
+type = 4
+saved_value = "BASIC_2"
+resource_name = "BASIC_2"
+
+[sub_resource type="BBNode" id="BBNode_ye307"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_1207t"]
+node = SubResource("BBNode_ye307")
+method = &"attack"
+args = Array[BBVariant]([SubResource("BBVariant_5u4kl")])
+
+[sub_resource type="BTWait" id="BTWait_svn1v"]
+duration = 1.5
+
+[sub_resource type="BTSequence" id="BTSequence_jrrkt"]
+custom_name = "Combo Attack"
+children = [SubResource("BTCallMethod_awjqc"), SubResource("BTWait_2udy2"), SubResource("BTCallMethod_1207t"), SubResource("BTWait_svn1v")]
+metadata/_weight_ = 1.0
+
+[sub_resource type="BBVariant" id="BBVariant_nuvbt"]
+type = 5
+saved_value = Vector2(1, 0)
+resource_name = "(1.0, 0.0)"
+
+[sub_resource type="BBNode" id="BBNode_nuvbt"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_wgijm"]
+node = SubResource("BBNode_nuvbt")
+method = &"walk_at_direction"
+args = Array[BBVariant]([SubResource("BBVariant_nuvbt")])
+
+[sub_resource type="BTWait" id="BTWait_nuvbt"]
+
+[sub_resource type="BTSequence" id="BTSequence_1tsog"]
+custom_name = "Strafe Left"
+children = [SubResource("BTCallMethod_wgijm"), SubResource("BTWait_nuvbt")]
+
+[sub_resource type="BBVariant" id="BBVariant_fyrcr"]
+type = 5
+saved_value = Vector2(-1, 0)
+resource_name = "(-1.0, 0.0)"
+
+[sub_resource type="BBNode" id="BBNode_ep8q1"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_1tsog"]
+node = SubResource("BBNode_ep8q1")
+method = &"walk_at_direction"
+args = Array[BBVariant]([SubResource("BBVariant_fyrcr")])
+
+[sub_resource type="BTWait" id="BTWait_wgijm"]
+
+[sub_resource type="BTSequence" id="BTSequence_1w6j0"]
+custom_name = "Strafe Right"
+children = [SubResource("BTCallMethod_1tsog"), SubResource("BTWait_wgijm")]
+
+[sub_resource type="BTProbabilitySelector" id="BTProbabilitySelector_66eof"]
+custom_name = "Attack patterns"
+children = [SubResource("BTSequence_7pnu1"), SubResource("BTSequence_jrrkt"), SubResource("BTSequence_1tsog"), SubResource("BTSequence_1w6j0")]
+
+[sub_resource type="BTSequence" id="BTSequence_3qhcu"]
+custom_name = "Should attack?"
+children = [SubResource("BTCondition_wgijm"), SubResource("BTProbabilitySelector_66eof")]
+
+[sub_resource type="BTCondition" id="BTCondition_jrrkt"]
+script = ExtResource("2_ink62")
+distance_min = 3.0
+distance_max = 20.0
+
+[sub_resource type="BBNode" id="BBNode_53r1u"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_rewec"]
+node = SubResource("BBNode_53r1u")
+method = &"walk_towards_target"
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_3qhcu"]
+custom_name = "Should pursure target?"
+children = [SubResource("BTCondition_jrrkt"), SubResource("BTCallMethod_rewec")]
+
+[sub_resource type="BBVariant" id="BBVariant_3qhcu"]
+saved_value = null
+resource_name = "<null>"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_2udy2"]
+property = &"target"
+value = SubResource("BBVariant_3qhcu")
+
+[sub_resource type="BTSequence" id="BTSequence_fyrcr"]
+custom_name = "No longer in a valid range, stop pursuing"
+children = [SubResource("BTSetAgentProperty_2udy2")]
+
+[sub_resource type="BTSelector" id="BTSelector_nuvbt"]
+custom_name = "Active"
+children = [SubResource("BTSequence_nuvbt"), SubResource("BTSequence_3qhcu"), SubResource("BTDynamicSequence_3qhcu"), SubResource("BTSequence_fyrcr")]
+
+[sub_resource type="BTSequence" id="BTSequence_2udy2"]
+custom_name = "Should become active?"
+children = [SubResource("BTCondition_nuvbt"), SubResource("BTSelector_nuvbt")]
+
+[sub_resource type="BBVariant" id="BBVariant_ep8q1"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_1tsog"]
+property = &"engaged"
+value = SubResource("BBVariant_ep8q1")
+
+[sub_resource type="BBVariant" id="BBVariant_1w6j0"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_66eof"]
+property = &"engaged"
+value = SubResource("BBVariant_1w6j0")
+
+[sub_resource type="BBVariant" id="BBVariant_1tsog"]
+type = 4
+saved_value = "Disengage"
+resource_name = "Disengage"
+
+[sub_resource type="BBNode" id="BBNode_1w6j0"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_66eof"]
+node = SubResource("BBNode_1w6j0")
+method = &"animate_ground"
+args = Array[BBVariant]([SubResource("BBVariant_1tsog")])
+
+[sub_resource type="BTWait" id="BTWait_fyrcr"]
+
+[sub_resource type="BTSequence" id="BTSequence_ble5h"]
+custom_name = "Disengage"
+children = [SubResource("BTSetAgentProperty_66eof"), SubResource("BTCallMethod_66eof"), SubResource("BTWait_fyrcr")]
+
+[sub_resource type="BTSequence" id="BTSequence_wgijm"]
+custom_name = "Should disengage?"
+children = [SubResource("BTCheckAgentProperty_1tsog"), SubResource("BTSequence_ble5h")]
+
+[sub_resource type="BTCondition" id="BTCondition_2udy2"]
+script = ExtResource("3_4qa7v")
+
+[sub_resource type="BBNode" id="BBNode_wgijm"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_3qhcu"]
+node = SubResource("BBNode_wgijm")
+method = &"walk_towards_spawnpoint"
+
+[sub_resource type="BTSequence" id="BTSequence_fm3un"]
+custom_name = "Return to spawn"
+children = [SubResource("BTCallMethod_3qhcu")]
+
+[sub_resource type="BTSequence" id="BTSequence_svn1v"]
+custom_name = "Should return to spawn?"
+children = [SubResource("BTCondition_2udy2"), SubResource("BTSequence_fm3un")]
+
+[sub_resource type="BTSelector" id="BTSelector_3qhcu"]
+custom_name = "Return to spawn"
+children = [SubResource("BTSequence_wgijm"), SubResource("BTSequence_svn1v")]
+
+[sub_resource type="BBNode" id="BBNode_3qhcu"]
+saved_value = NodePath(".")
+resource_name = "."
+
+[sub_resource type="BTCallMethod" id="BTCallMethod_2udy2"]
+node = SubResource("BBNode_3qhcu")
+method = &"idle"
+
+[sub_resource type="BTSequence" id="BTSequence_5u4kl"]
+custom_name = "Idle"
+children = [SubResource("BTCallMethod_2udy2")]
+
+[sub_resource type="BTSelector" id="BTSelector_fyrcr"]
+custom_name = "Main"
+children = [SubResource("BTSequence_2udy2"), SubResource("BTSelector_3qhcu"), SubResource("BTSequence_5u4kl")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_jrrkt")
+root_task = SubResource("BTSelector_fyrcr")

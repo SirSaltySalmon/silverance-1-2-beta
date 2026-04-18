@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://k31qs6nhaxja"]
+
+[ext_resource type="Script" uid="uid://toeadm8rstqf" path="res://mechanics/combat/block/block_module.gd" id="1_uqt2k"]
+
+[node name="BlockComponent" type="Node" unique_id=1897702980 node_paths=PackedStringArray("parry_timer", "punish_timer", "player_buffer")]
+script = ExtResource("1_uqt2k")
+parry_timer = NodePath("ParryTimer")
+punish_timer = NodePath("PunishTimer")
+player_buffer = NodePath("PlayerBuffer")
+blocking = null
+parry = null
+
+[node name="ParryTimer" type="Timer" parent="." unique_id=1898404202]
+wait_time = 0.3
+one_shot = true
+
+[node name="PunishTimer" type="Timer" parent="." unique_id=907962826]
+wait_time = 4.5
+one_shot = true
+
+[node name="PlayerBuffer" type="Timer" parent="." unique_id=880677528]
+
+[connection signal="timeout" from="PunishTimer" to="." method="_on_punish_timer_timeout"]

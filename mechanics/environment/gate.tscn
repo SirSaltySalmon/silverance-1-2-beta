@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://di4fql3fjq72c"]
+
+[ext_resource type="Script" uid="uid://htjf4tmkai6c" path="res://mechanics/environment/gate.gd" id="1_83lws"]
+[ext_resource type="PackedScene" uid="uid://bqtlxn6yijdb0" path="res://mechanics/environment/interaction_component.tscn" id="2_30rd3"]
+[ext_resource type="Texture2D" uid="uid://jihb0ebvvjue" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/particles/alpha/star_01_a.png" id="3_1uwwm"]
+[ext_resource type="Texture2D" uid="uid://imw7nqiix20o" path="res://assets/assetpacks/brackeys-vfx/brackeys_particle_bundle/particles/alpha/magic_02_a.png" id="4_3dybj"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ql6ie"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3dybj"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -360.0
+angle_max = 360.00003
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 3.0
+initial_velocity_max = 5.0
+gravity = Vector3(0, 5, 0)
+radial_accel_min = 9.999997
+radial_accel_max = 9.999997
+collision_mode = 1
+collision_friction = 1.0
+collision_bounce = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5q431"]
+transparency = 1
+blend_mode = 1
+albedo_texture = ExtResource("3_1uwwm")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_ii856"]
+material = SubResource("StandardMaterial3D_5q431")
+
+[node name="Gate" type="Node3D" unique_id=841746259 node_paths=PackedStringArray("interaction_component")]
+script = ExtResource("1_83lws")
+text = "Enter new area"
+interaction_component = NodePath("InteractionComponent")
+
+[node name="InteractionComponent" parent="." unique_id=412617559 node_paths=PackedStringArray("parent") instance=ExtResource("2_30rd3")]
+parent = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionComponent" unique_id=60647905]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CylinderShape3D_ql6ie")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="." unique_id=1166661710]
+process_material = SubResource("ParticleProcessMaterial_3dybj")
+draw_pass_1 = SubResource("QuadMesh_ii856")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1667753986]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.1, 0)
+texture = ExtResource("4_3dybj")

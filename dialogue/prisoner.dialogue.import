@@ -1,0 +1,16 @@
+[remap]
+
+importer="dialogue_manager"
+importer_version=15
+type="Resource"
+uid="uid://5ox2eysqy7i1"
+path="res://.godot/imported/prisoner.dialogue-381fd02b8bd59a7c4170c8fc5f63a3b8.tres"
+
+[deps]
+
+source_file="res://dialogue/prisoner.dialogue"
+dest_files=["res://.godot/imported/prisoner.dialogue-381fd02b8bd59a7c4170c8fc5f63a3b8.tres"]
+
+[params]
+
+defaults=true

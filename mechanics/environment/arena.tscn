@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://6cs0vfw5illo"]
+
+[node name="Arena" type="Area3D" unique_id=483956022]
+collision_layer = 0
+collision_mask = 2

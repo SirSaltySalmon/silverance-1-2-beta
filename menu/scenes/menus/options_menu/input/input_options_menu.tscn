@@ -1,0 +1,32 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddmjrijejemw2"]
+
+[ext_resource type="PackedScene" uid="uid://dp3rgqaehb3xu" path="res://addons/maaacks_game_template/base/scenes/menus/options_menu/input/input_options_menu.tscn" id="1_rynl3"]
+[ext_resource type="Script" uid="uid://7rn43peltxqy" path="res://menu/scenes/menus/options_menu/input/input_options_menu.gd" id="2_ysmga"]
+
+[node name="Controls" instance=ExtResource("1_rynl3")]
+script = ExtResource("2_ysmga")
+remapping_mode = 1
+
+[node name="InputActionsList" parent="VBoxContainer/InputMappingContainer" index="1"]
+visible = false
+input_action_names = Array[StringName]([&"move_forward", &"move_backward", &"move_up", &"move_down", &"move_left", &"move_right", &"interact", &"attack", &"block", &"dodge", &"jump", &"lock_on", &"switch_lock_on_target", &"pause"])
+readable_action_names = Array[String](["Move Forward", "Move Backward", "Move Up", "Move Down", "Move Left", "Move Right", "Interact", "Attack", "Block", "Dodge", "Jump", "Lock On", "Switch Lock On Target", "Pause"])
+action_name_map = {
+&"attack": "Attack",
+&"block": "Block",
+&"dodge": "Dodge",
+&"interact": "Interact",
+&"jump": "Jump",
+&"lock_on": "Lock On",
+&"move_backward": "Move Backward",
+&"move_down": "Move Down",
+&"move_forward": "Move Forward",
+&"move_left": "Move Left",
+&"move_right": "Move Right",
+&"move_up": "Move Up",
+&"pause": "Pause",
+&"switch_lock_on_target": "Switch Lock On Target"
+}
+
+[node name="InputActionsTree" parent="VBoxContainer/InputMappingContainer" index="2"]
+visible = true

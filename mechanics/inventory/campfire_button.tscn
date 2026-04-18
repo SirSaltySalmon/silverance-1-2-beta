@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://bmli3uvdkixr"]
+
+[ext_resource type="Script" uid="uid://ck0071k5j5urj" path="res://mechanics/inventory/campfire_button.gd" id="1_pcs80"]
+
+[node name="Button" type="Button" unique_id=166793784]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -9.0
+offset_bottom = 9.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+text = "Harding Demon"
+icon_alignment = 1
+expand_icon = true
+script = ExtResource("1_pcs80")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

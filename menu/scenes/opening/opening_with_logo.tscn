@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://oyieti36ms8i"]
+
+[ext_resource type="PackedScene" uid="uid://sikc02ddepyt" path="res://addons/maaacks_game_template/base/scenes/opening/opening.tscn" id="1_0c55e"]
+[ext_resource type="Script" uid="uid://dcm0ggc2dk44b" path="res://menu/scenes/opening/opening.gd" id="2_fntjm"]
+[ext_resource type="Texture2D" uid="uid://ccutbmxasuvsw" path="res://menu/assets/godot_engine_logo/logo_vertical_color_dark.png" id="3_qjhjo"]
+[ext_resource type="AudioStream" uid="uid://q5yp323yg0ey" path="res://sound/music/Electro-Light - Symbolism [NCS Release].mp3" id="4_fntjm"]
+
+[node name="Opening" unique_id=996756711 instance=ExtResource("1_0c55e")]
+script = ExtResource("2_fntjm")
+next_scene = "uid://bbap2u7e4iqln"
+images = Array[Texture2D]([ExtResource("3_qjhjo")])
+
+[node name="BackgroundMusicPlayer" parent="." index="0"]
+stream = ExtResource("4_fntjm")

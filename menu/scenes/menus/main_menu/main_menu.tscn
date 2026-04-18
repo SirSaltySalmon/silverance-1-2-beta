@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbipwnnpo208w"]
+
+[ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_game_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_pgt48"]
+[ext_resource type="Script" uid="uid://cg0tin3hsax8e" path="res://menu/scenes/menus/main_menu/main_menu.gd" id="2_8xkdi"]
+[ext_resource type="PackedScene" uid="uid://di3cck2wq0srv" path="res://menu/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_kvlyw"]
+[ext_resource type="PackedScene" uid="uid://n8wel0gfoemj" path="res://menu/scenes/credits/credits.tscn" id="4_q8yfv"]
+
+[node name="MainMenu" instance=ExtResource("1_pgt48")]
+script = ExtResource("2_8xkdi")
+game_scene_path = "res://menu/scenes/game_scene/game_ui.tscn"
+options_packed_scene = ExtResource("3_kvlyw")
+credits_packed_scene = ExtResource("4_q8yfv")
+
+[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
+text = "SILVERANCE 1/2 Alpha"

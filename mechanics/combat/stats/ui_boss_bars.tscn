@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bc7y6ur0xwtm5"]
+
+[ext_resource type="Script" uid="uid://bqla1qsaqqm7t" path="res://mechanics/combat/stats/ui_boss_bars.gd" id="1_bjcr0"]
+
+[node name="Boss" type="VBoxContainer" unique_id=1335806327 node_paths=PackedStringArray("label")]
+custom_minimum_size = Vector2(700, 47)
+theme_override_constants/separation = 0
+alignment = 2
+script = ExtResource("1_bjcr0")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="." unique_id=254002031]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+text = "Dungeon Beast"
+horizontal_alignment = 1

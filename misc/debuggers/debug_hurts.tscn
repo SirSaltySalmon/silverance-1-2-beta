@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dsa3v0y8ty8ho"]
+
+[ext_resource type="Script" uid="uid://r50607uwypl7" path="res://misc/debuggers/debug_hurts.gd" id="1_7yafb"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2o5nx"]
+radius = 5.833
+
+[node name="DebugHurts" type="Area3D" node_paths=PackedStringArray("parent")]
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_7yafb")
+parent = NodePath("")
+attack_separation = 0.1
+damage = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_2o5nx")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

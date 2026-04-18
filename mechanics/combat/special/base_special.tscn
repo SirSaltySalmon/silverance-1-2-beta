@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://byntloj3j1arw"]
+
+[ext_resource type="Script" uid="uid://bsh3xlqamdnxx" path="res://mechanics/combat/special/special.gd" id="1_v0yy7"]
+
+[node name="BaseSpecial" type="Node" unique_id=1077451313]
+script = ExtResource("1_v0yy7")

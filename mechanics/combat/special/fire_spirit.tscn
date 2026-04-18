@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://dxqoqbglddbut"]
+
+[ext_resource type="Script" uid="uid://dv755ddcxvpa3" path="res://mechanics/combat/special/fire_spirit.gd" id="1_8w5xd"]
+[ext_resource type="PackedScene" uid="uid://c4nbumyeqivj0" path="res://assets/vfx/fire.tscn" id="2_1prwf"]
+[ext_resource type="Script" uid="uid://b2dav4dyesthx" path="res://mechanics/combat/special/fire_spirit_effects.gd" id="2_c8ht1"]
+[ext_resource type="AudioStream" uid="uid://c07qy8il6fh2m" path="res://sound/sfx/deltarune-explosion.mp3" id="3_8u8eg"]
+[ext_resource type="PackedScene" uid="uid://t8y51dlbhugm" path="res://assets/vfx/fire_explosion.tscn" id="4_c8ht1"]
+
+[sub_resource type="Animation" id="Animation_c8ht1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpringArm3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8u8eg"]
+resource_name = "play"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpringArm3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 6.2831855, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4it07"]
+_data = {
+&"RESET": SubResource("Animation_c8ht1"),
+&"play": SubResource("Animation_8u8eg")
+}
+
+[node name="FireSpirit" type="Node" unique_id=1545228514 node_paths=PackedStringArray("effects")]
+script = ExtResource("1_8w5xd")
+special_name = "Fire Spirit"
+cost = 10
+effects = NodePath("FireSpiritEffects")
+metadata/_custom_type_script = "uid://bsh3xlqamdnxx"
+
+[node name="FireSpiritEffects" type="Node3D" parent="." unique_id=25588569 node_paths=PackedStringArray("sfx", "fire_vfx", "explosion", "anim")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("2_c8ht1")
+sfx = NodePath("AudioStreamPlayer3D")
+fire_vfx = NodePath("SpringArm3D/Fire")
+explosion = NodePath("FireExplosionFlipbook")
+anim = NodePath("AnimationPlayer")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="FireSpiritEffects" unique_id=1782178516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+stream = ExtResource("3_8u8eg")
+volume_db = -5.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="FireSpiritEffects" unique_id=1705560737]
+libraries/ = SubResource("AnimationLibrary_4it07")
+
+[node name="FireExplosionFlipbook" parent="FireSpiritEffects" unique_id=1379501936 instance=ExtResource("4_c8ht1")]
+transform = Transform3D(0.9999999, 0, 0, 0, 1, 0, 0, 0, 0.9999999, 0, 1, 0)
+autoplay = false
+
+[node name="SpringArm3D" type="SpringArm3D" parent="FireSpiritEffects" unique_id=882704448]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0)
+spring_length = 0.5
+
+[node name="Fire" parent="FireSpiritEffects/SpringArm3D" unique_id=1779837651 instance=ExtResource("2_1prwf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.5)

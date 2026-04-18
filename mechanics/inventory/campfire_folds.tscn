@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://3rc2ygmsfr34"]
+
+[ext_resource type="Script" uid="uid://d0ebfywx3b8h" path="res://mechanics/inventory/campfire_folds.gd" id="1_e2gi1"]
+
+[node name="CampfireFolds" type="FoldableContainer" unique_id=250644951 node_paths=PackedStringArray("container")]
+offset_right = 24.0
+offset_bottom = 32.0
+script = ExtResource("1_e2gi1")
+container = NodePath("VBoxContainer")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1730907733]
+layout_mode = 2

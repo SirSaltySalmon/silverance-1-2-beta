@@ -1,0 +1,73 @@
+[gd_resource type="AnimationNodeStateMachine" format=3 uid="uid://c2omtu8r8uflg"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_01a8r"]
+animation = &"2H_Melee_Attack_Chop"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n0kro"]
+animation = &"2H_Melee_Attack_Slice"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vs4qx"]
+animation = &"2H_Melee_Attack_Spin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_5bser"]
+animation = &"2H_Melee_Attack_Spin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qtwgh"]
+animation = &"2H_Melee_Attack_Spin"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cy03l"]
+animation = &"Spellcast_Raise"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jibbd"]
+animation = &"2H_Melee_Attack_Stab"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i3uf7"]
+animation = &"2H_Melee_Attack_Chop"
+use_custom_timeline = true
+timeline_length = 0.6370011419057846
+stretch_time_scale = false
+start_offset = 0.16300888
+loop_mode = 0
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yu6mf"]
+animation = &"2H_Melee_Attack_Stab"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f8gl5"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ktgdi"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rcedk"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i3uf7"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_udgv8"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rrgws"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_srwf3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ixbjj"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_88256"]
+
+[resource]
+states/BASIC_0/node = SubResource("AnimationNodeAnimation_01a8r")
+states/BASIC_0/position = Vector2(509, -82)
+states/BASIC_1/node = SubResource("AnimationNodeAnimation_n0kro")
+states/BASIC_1/position = Vector2(509, -25)
+states/BASIC_2/node = SubResource("AnimationNodeAnimation_vs4qx")
+states/BASIC_2/position = Vector2(509, 25)
+states/CHARGED/node = SubResource("AnimationNodeAnimation_5bser")
+states/CHARGED/position = Vector2(509, 183)
+states/DEATHFANG_HIT/node = SubResource("AnimationNodeAnimation_qtwgh")
+states/DEATHFANG_HIT/position = Vector2(-146, 100)
+states/DEATHFANG_STARTUP/node = SubResource("AnimationNodeAnimation_cy03l")
+states/DEATHFANG_STARTUP/position = Vector2(48, 100)
+states/DODGE/node = SubResource("AnimationNodeAnimation_jibbd")
+states/DODGE/position = Vector2(509, 129)
+states/PLUNGE/node = SubResource("AnimationNodeAnimation_i3uf7")
+states/PLUNGE/position = Vector2(509, 242.491)
+states/RUNNING/node = SubResource("AnimationNodeAnimation_yu6mf")
+states/RUNNING/position = Vector2(509, 76)
+transitions = ["Start", "BASIC_0", SubResource("AnimationNodeStateMachineTransition_f8gl5"), "Start", "BASIC_1", SubResource("AnimationNodeStateMachineTransition_ktgdi"), "Start", "BASIC_2", SubResource("AnimationNodeStateMachineTransition_rcedk"), "Start", "RUNNING", SubResource("AnimationNodeStateMachineTransition_i3uf7"), "Start", "DODGE", SubResource("AnimationNodeStateMachineTransition_udgv8"), "Start", "CHARGED", SubResource("AnimationNodeStateMachineTransition_rrgws"), "Start", "PLUNGE", SubResource("AnimationNodeStateMachineTransition_srwf3"), "Start", "DEATHFANG_STARTUP", SubResource("AnimationNodeStateMachineTransition_ixbjj"), "DEATHFANG_STARTUP", "DEATHFANG_HIT", SubResource("AnimationNodeStateMachineTransition_88256")]
+graph_offset = Vector2(-102, 72.491)

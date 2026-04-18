@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://863wsh7c4g05"]
+
+[ext_resource type="Texture2D" uid="uid://bbka01fhgbsbg" path="res://assets/2d/circle.png" id="1_1l064"]
+[ext_resource type="Script" uid="uid://c1172a7wlc78h" path="res://mechanics/effects/placeholder_effects.gd" id="2_rluha"]
+
+[node name="PlaceholderEffects" type="Sprite3D"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+billboard = 1
+texture = ExtResource("1_1l064")
+script = ExtResource("2_rluha")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

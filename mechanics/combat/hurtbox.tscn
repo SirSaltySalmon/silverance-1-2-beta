@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bv7ga1y53cixk"]
+
+[ext_resource type="Script" uid="uid://b2rb2oqb7oiar" path="res://mechanics/combat/hurtbox.gd" id="1_mjdae"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_snlw4"]
+radius = 0.75634766
+height = 3.7538223
+
+[node name="Hurtbox" type="Area3D" unique_id=920950071 node_paths=PackedStringArray("parent")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_mjdae")
+parent = NodePath("")
+
+[node name="CollisionBox" type="CollisionShape3D" parent="." unique_id=404417491]
+shape = SubResource("CapsuleShape3D_snlw4")

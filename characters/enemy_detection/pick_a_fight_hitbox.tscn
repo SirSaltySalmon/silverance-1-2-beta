@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cveyw0doeoxrb"]
+
+[ext_resource type="Script" uid="uid://dk5n1htxvm52w" path="res://characters/enemy_detection/pick_a_fight_hitbox.gd" id="1_g8gr7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ckhcd"]
+radius = 50.0
+
+[node name="PickAFightHitbox" type="Area3D" unique_id=876864049]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, 0, 0, 0)
+collision_layer = 0
+collision_mask = 6
+script = ExtResource("1_g8gr7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=19196532]
+shape = SubResource("SphereShape3D_ckhcd")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

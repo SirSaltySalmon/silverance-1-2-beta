@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://cbx8rxmio0tru"]
+
+[ext_resource type="Script" uid="uid://biusujjd74kjj" path="res://misc/debuggers/debuggers.gd" id="1_nppq5"]
+
+[node name="Debuggers" type="Node3D" node_paths=PackedStringArray("state_displayer", "invul_displayer", "dodge_registering_displayer", "attack_displayer", "block_displayer", "state_machine", "character")]
+script = ExtResource("1_nppq5")
+display_state = true
+display_invulnerability = true
+display_dodge_registering = true
+display_attack = true
+display_block = true
+state_displayer = NodePath("StateDisplay")
+invul_displayer = NodePath("InvulDisplay")
+dodge_registering_displayer = NodePath("RegisterDodgeDisplay")
+attack_displayer = NodePath("AttackDisplay")
+block_displayer = NodePath("BlockDisplay")
+state_machine = NodePath("")
+character = NodePath("")
+
+[node name="StateDisplay" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.83642, 0)
+billboard = 1
+text = "State: ?"
+
+[node name="InvulDisplay" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.63521, 0)
+billboard = 1
+text = "Vulnerable: true"
+
+[node name="RegisterDodgeDisplay" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.43659, 0)
+billboard = 1
+text = "Dodge registering: true"
+
+[node name="AttackDisplay" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2316, 0)
+billboard = 1
+text = "Attack: BASIC_0"
+
+[node name="BlockDisplay" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02169, 0)
+billboard = 1
+text = "Block: false, Parrying: false"

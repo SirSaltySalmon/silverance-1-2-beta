@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bluej1oa57heg"]
+
+[ext_resource type="Script" uid="uid://g8o8o31e7grj" path="res://collection/accessories/crucifix/crucifix.gd" id="1_4a6l7"]
+
+[node name="Crucifix" type="Node"]
+script = ExtResource("1_4a6l7")

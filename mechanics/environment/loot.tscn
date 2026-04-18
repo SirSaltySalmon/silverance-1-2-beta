@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://co1kof16j0gdp"]
+
+[ext_resource type="Script" uid="uid://dbnednsbu8hpi" path="res://mechanics/environment/loot.gd" id="1_41glu"]
+[ext_resource type="Texture2D" uid="uid://w0q24d7ympev" path="res://assets/2d/loot.png" id="2_p1yq2"]
+[ext_resource type="Texture2D" uid="uid://dr7jlw8aw0h3y" path="res://collection/weapons/greatsword/greatsword.png" id="3_8h46g"]
+[ext_resource type="Shader" uid="uid://j0t5kh6rj53r" path="res://assets/shaders/outline.gdshader" id="3_p1yq2"]
+[ext_resource type="PackedScene" uid="uid://bqtlxn6yijdb0" path="res://mechanics/environment/interaction_component.tscn" id="5_27cly"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_71d5y"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8h46g"]
+shader = ExtResource("3_p1yq2")
+shader_parameter/thickness = 5.0
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = 0.0
+shader_parameter/outline_color = Color(0, 0, 0, 0.72549)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = Vector2(2, -2)
+shader_parameter/max_or_add = false
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_p1yq2"]
+radius = 1.2
+
+[node name="Loot" type="Node3D" unique_id=580523239 node_paths=PackedStringArray("texturerect", "interaction_component")]
+script = ExtResource("1_41glu")
+texturerect = NodePath("SubViewport/MarginContainer/TextureRect")
+text = "Pick up"
+interaction_component = NodePath("InteractionComponent")
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=1075658868]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+billboard = 1
+texture_filter = 0
+texture = SubResource("ViewportTexture_71d5y")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=361746162]
+transparent_bg = true
+size = Vector2i(128, 128)
+
+[node name="BG" type="TextureRect" parent="SubViewport" unique_id=951299855]
+modulate = Color(1, 1, 1, 0.72549)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_p1yq2")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="SubViewport" unique_id=2104742697]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport/MarginContainer" unique_id=1977141621]
+material = SubResource("ShaderMaterial_8h46g")
+layout_mode = 2
+texture = ExtResource("3_8h46g")
+expand_mode = 1
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=34660533]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.478431, 0.862745, 1, 1)
+light_energy = 2.0
+
+[node name="InteractionComponent" parent="." unique_id=412617559 node_paths=PackedStringArray("parent") instance=ExtResource("5_27cly")]
+parent = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="InteractionComponent" unique_id=1912952164]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("SphereShape3D_p1yq2")

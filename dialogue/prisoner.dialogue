@@ -1,0 +1,51 @@
+~ prisoner_first_talk
+Prisoner: Are you trying to escape as well?
+- Yes
+	Prisoner: Perfect! I need your help.
+- No
+	Prisoner: ...Okay. Just don't tell anyone about me then.
+	Prisoner: But, in case you're up for it...
+- Third Option
+	Prisoner: ...What do you mean?
+Prisoner: Beyond this one-way door is a powerful beast.
+Prisoner: This is the last obstacle in the way of our freedom.
+Prisoner: I'm lowkey kind of useless right now. He's way too strong for me.
+Prisoner: You, though... are an Undead, aren't you?
+Prisoner: Even when you die, you can stand right back up.
+Prisoner: You might be our key out of here!
+Prisoner: Listen, even if he's gonna mince you to pieces, don't be afraid of death!
+Prisoner: Every death is a learning experience!
+Prisoner: Once you know what you're against inside out, it'll be easy peasy!
+- I didn't agree to fight him?
+	Prisoner: Well, I don't know what else you're gonna do if you won't...
+	Prisoner: But I'll be rooting for you!
+- Let's go!
+	Prisoner: That's the spirit!
+=> END
+
+~ prisoner_encourage
+Prisoner: You can do it!
+Prisoner: I'll be watching him. I'll let you know if I spot anything useful.
+=> END
+
+~ prisoner_giving_advice
+Prisoner: ...You seem bruised. But don't be disheartened by what you've gone through so far.
+Prisoner: From what I see, the beast only repeats two attack patterns.
+Prisoner: And after a large attack, he opens himself up for a big window of opportunity.
+Prisoner: Avoid being too aggressive. Focus on parrying his attacks and look for that window.
+Prisoner: Parrying may not deal any damage, but it whittles down his balance.
+Prisoner: When he topples, go for it!
+=> prisoner_after_advice
+
+~ prisoner_after_advice
+Prisoner: Wanna hear my advice again?
+- Yes
+	=> prisoner_giving_advice
+- No
+	Prisoner: You can do it!
+=> END
+
+~ prisoner_congratulate
+Prisoner: Hey, you were awesome just now taking down that beast!
+Prisoner: Now we can finally escape this prison. Thanks a lot!
+Prisoner: WOOHOO!!! FREEDOM!!!

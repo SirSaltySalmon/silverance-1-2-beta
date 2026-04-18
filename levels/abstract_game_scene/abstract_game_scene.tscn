@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://blp1sttyvglsr"]
+
+[ext_resource type="Script" uid="uid://bbymrin0cm704" path="res://addons/maaacks_game_template/extras/scripts/level_loader.gd" id="1_4y5eb"]
+[ext_resource type="Script" uid="uid://b521j6js6ce67" path="res://levels/abstract_game_scene/abstract_game_scene.gd" id="1_dc6d0"]
+[ext_resource type="PackedScene" uid="uid://3u6rllm7wdq" path="res://characters/player/Player.tscn" id="2_4yvg2"]
+[ext_resource type="PackedScene" uid="uid://co1kof16j0gdp" path="res://mechanics/environment/loot.tscn" id="3_5yfin"]
+
+[node name="AbstractGameScene" type="Node3D" unique_id=571917001 node_paths=PackedStringArray("level_loader")]
+script = ExtResource("1_dc6d0")
+player_scene = ExtResource("2_4yvg2")
+loot_scene = ExtResource("3_5yfin")
+level_loader = NodePath("LevelLoader")
+
+[node name="LevelLoader" type="Node" parent="." unique_id=1592697183 node_paths=PackedStringArray("level_container")]
+unique_name_in_owner = true
+script = ExtResource("1_4y5eb")
+loading_screen_path = "uid://ckqi4sha6vfy1"
+level_container = NodePath("..")
+metadata/_custom_type_script = "uid://bbymrin0cm704"
