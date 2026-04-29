@@ -1,13 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://n8wel0gfoemj"]
+[gd_scene format=3 uid="uid://n8wel0gfoemj"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_game_template/base/scenes/credits/credits.tscn" id="1_m2lte"]
-[ext_resource type="Script" path="res://menu/scenes/credits/credits.gd" id="2_dpce2"]
+[ext_resource type="PackedScene" uid="uid://t2dui8ppm3a4" path="res://addons/maaacks_game_template/base/scenes/credits/credits.tscn" id="1_m2lte"]
+[ext_resource type="Script" uid="uid://uoar5lefeq0r" path="res://menu/scenes/credits/credits.gd" id="2_dpce2"]
 
-[node name="Credits" instance=ExtResource("1_m2lte")]
+[node name="Credits" unique_id=377551628 instance=ExtResource("1_m2lte")]
 script = ExtResource("2_dpce2")
-attribution_file_path = "res://menu/ATTRIBUTION.md"
+attribution_file_path = "res://ATTRIBUTION.md"
+h1_font_size = 0
+h2_font_size = 0
+h3_font_size = 0
+h4_font_size = 0
+current_speed = 1.0
+enabled = true
 
-[node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" index="1"]
+[node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" parent_id_path=PackedInt32Array(404618639) index="1" unique_id=1796281011]
 text = "[center][font_size=48]Collaborators[/font_size]
 
 [font_size=32]Role[/font_size]
